@@ -1,5 +1,8 @@
 import express from 'express';
 
+// Database
+import './database';
+
 // Routes
 import routes from './routes';
 

@@ -1,9 +1,11 @@
 import { Router } from 'express';
 
+// Controllers
+import StudentsController from './app/controllers/StudentsController';
+
 const routes = new Router();
 
-routes.get('/', (req, res) => {
-  res.json({ message: 'Hello Gympoint :)' });
-});
+// Cadastrar um novo aluno
+routes.post('/students', StudentsController.store);
 
 export default routes;
