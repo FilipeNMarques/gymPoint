@@ -3,7 +3,7 @@ import Sequelize, { Model } from 'sequelize';
 // Bcrypt
 import bcrypt from 'bcryptjs';
 
-class Adm extends Model {
+class User extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -16,13 +16,17 @@ class Adm extends Model {
         sequelize,
       }
     );
-    this.addHook('beforeSave', async adm => {
-      if (adm.password) {
-        adm.password_hash = await bcrypt.hash(adm.password, 8);
+    this.addHook('beforeSave', async user => {
+      if (user.password) {
+        user.password_hash = await bcrypt.hash(user.password, 8);
       }
     });
     return this;
   }
+
+  checkPassword(password) {
+    return bcrypt.compare(password, this.password_hash);
+  }
 }
 
-export default Adm;
+export default User;

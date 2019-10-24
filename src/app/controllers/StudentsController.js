@@ -15,6 +15,11 @@ class StudentsController {
     const { id, name, email } = await Students.create(req.body);
     return res.json({ id, name, email });
   }
+
+  async update(req, res) {
+    console.log(req.userId);
+    return res.json({ ok: true });
+  }
 }
 
 export default new StudentsController();
