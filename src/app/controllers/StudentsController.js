@@ -41,7 +41,9 @@ class StudentsController {
       height: Yup.number(),
     });
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validations fails' });
+      return res.status(400).json({
+        error: 'Validations fails',
+      });
     }
 
     const { id } = req.params;
@@ -50,7 +52,9 @@ class StudentsController {
     const students = await Students.findByPk(id);
 
     if (!students) {
-      return res.status(400).json({ error: 'The student does not exist' });
+      return res.status(400).json({
+        error: 'The student does not exist',
+      });
     }
 
     if (email !== students.email) {
@@ -59,7 +63,9 @@ class StudentsController {
       });
 
       if (studentExists) {
-        return res.status(400).json({ error: 'Student already exists' });
+        return res.status(400).json({
+          error: 'Student already exists',
+        });
       }
     }
 
