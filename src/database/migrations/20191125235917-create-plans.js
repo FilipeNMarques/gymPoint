@@ -5,7 +5,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primarykey: true,
+        primaryKey: true,
       },
       title: {
         type: Sequelize.STRING,
